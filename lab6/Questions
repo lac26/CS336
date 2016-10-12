@@ -8,4 +8,8 @@ curl -X HEAD  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Ty
 curl -X POST  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
 curl --head http://localhost:2000/request  
 curl http://localhost:2000/request
-b) Either page not found or BAD_REQUEST
+b) Either page not found(404) or BAD_REQUEST
+
+6.2
+a) Forms support the post method, which reads in the current content of the form.  They also suppport get in order to display the form on the webpage.
+b) The form data is received from the html and passed back to the server via a body object populated with the data via the post method.  The data itself is not modified but the format it is displayed in is modified.
