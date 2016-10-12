@@ -1,0 +1,11 @@
+6.1
+a)
+I could only test the get and the .all(requests) with the browser but could test all of the methods with the curl tool.  The post,put,header etc. requests I could not test in chrome because they had the same address '/request' as get and get is the request called by defualt.
+The requests I tested were:
+curl -X PUT http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X GET http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X HEAD  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X POST  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl --head http://localhost:2000/request  
+curl http://localhost:2000/request
+b) Either page not found or BAD_REQUEST
