@@ -1,0 +1,47 @@
+<!--
+Lydia Cupery
+October 15/2016
+Lab7
+NOTE: As discussed, nly did the one with the html, not the one with the PHP 
+-->
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+
+    <style>  
+		a.test {
+    	font-weight: bold;
+		}
+    </style>
+</head>
+
+<body>
+    <a href="http://jquery.com/">jQuery</a>
+
+    <script src="jquery.js"></script>
+    <script>
+
+    //called when the document is ready
+    $( document ).ready(function() {
+
+    	var parElement = $( "<p>This is the paragraph I am adding when the document is ready!</p>" ); //declare the paragraph as a variable
+    	parElement.appendTo( "#content" ); //add the paragraph element to the content of the page
+    	parElement.insertAfter( "a" ); //insert the paragraph after a
+
+	//when the user clicks the link 
+    $( "a" ).click(function( event ) { 
+        alert( "As you can see, the link no longer took you to jquery.com" ); 
+        event.preventDefault();
+        $( this ).hide( "slow" );
+ 
+    });
+ 
+});
+	</script>
+</body>
+
+</html>
