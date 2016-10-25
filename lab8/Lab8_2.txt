@@ -6,7 +6,7 @@ a. i_ each of the variables is a component.  This matters because then these fun
 b. i_The page is automatically updated to reflect the changes since the interval is 2000
 ii_ The components are already visible on the page, so when setting the state are simply updating the values of the components
 iii_ So that the state of the DOM does not differ from the state of the component
-iv_ Currently we are simply using Date.now() for our optimisitc id, which would require a more robust system in the future.  If the server rejects the comment, we receive an error
+iv_ Currently we are simply using Date.now() for our optimisitc id, which would require a more robust system in the future since 2 people could post at same time.  If the server rejects the comment, we pass all the comments in as the data and do not print out the new comment
 
 
 
