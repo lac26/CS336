@@ -1,0 +1,15 @@
+a. i_ each of the variables is a component.  This matters because then these functional applications can be re-used and can be thought about in isolation.
+   ii_ JSX transforms XML-like syntax in React to javascript
+   iii_ The comments are loaded from the URL on component did mount, new comments are added by setting the state of author and text, and the comments are saved using the handleCommentSubmit which refreshes the server
+   iv_ Props are immutable, they are "owned" by the parent.  State is mutable and can be changed using this.setState().  The distinction matters because if we want to be able to set a variable in the child, we must use state instead of props.
+
+b. i_The page is automatically updated to reflect the changes since the interval is 2000
+ii_ The components are already visible on the page, so when setting the state are simply updating the values of the components
+iii_ So that the state of the DOM does not differ from the state of the component
+iv_ Currently we are simply using Date.now() for our optimisitc id, which would require a more robust system in the future.  If the server rejects the comment, we receive an error
+
+
+
+
+
+
