@@ -48,7 +48,7 @@ Assignment: Homework 2!-->
       data: { id:  myId}
     })
      .done(function( result ) {
-       $("body").append("<p>" + result.list + "</p>");
+       $("body").append("<p>" + result.content + "</p>");
             })
      .fail(function(xhr, status, errorThrown) {
           console.log("/fetch request unsuccessful.  Error" + errorThrown)
