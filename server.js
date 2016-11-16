@@ -31,7 +31,7 @@ var COMMENTS_FILE = path.join(__dirname, 'comments.json');
 
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, 'lab11/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
