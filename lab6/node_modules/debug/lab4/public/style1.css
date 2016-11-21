@@ -1,0 +1,130 @@
+/* Author: Lydia Cupery  Date: September 28 */
+
+/* set the font for the body and color of paragraph */
+body 		{font: 16px "Helvetica", cursive; background:url("Blue-rule.png");}
+p 		{color: blue;}
+
+/* first letters */
+strong 		{ color: red; font-size:200%; background-color: rgb(221,221,255);}
+
+/* set first of type strong to red */
+strong:first-of-type 	{  color: red; }
+
+/*set color for first and second list*/
+.carrot 	{ color: orange; }
+.spinach 	{ color: green; }
+
+/* set the image before the first and second line*/
+#first::before, #second::before { content: url("Yellow-pin.png");}
+
+/* set the first list to italic*/
+#first 		{ font-style: italic; }
+
+.spinach 	{  color: green;  background-color: rgb(221,221,255);}
+
+/* numbered paragraphs */
+h3.numbered 	{counter-reset: mynum;}
+ 
+p.numbered:before {  content: counter(mynum) ": ";  counter-increment: mynum;  font-weight: bold;}
+
+.border 	{ margin-bottom: 8px; border: 20px solid Aqua; float:left;}
+
+#numbered	{ margin-bottom: 8px; border: 20px solid Aqua; float:left;}
+
+ul {list-style: upper-roman;}
+
+h3	{counter-reset: headerCount; }
+
+/*set tge headings w/ capital letters*/
+h3::before	{   content: counter(headerCount, upper-latin) ": ";  counter-increment: headerCount;  font-weight: bold;}
+
+/* set the fixed pin to the top of the document */
+#fixed-pin {position:fixed; top: 1px; right: 1px;}
+
+/*** Style for doc3.html (Tables) ***/
+
+#demo-table {
+  font: 100% sans-serif;
+  background-color: #efe;
+  border-collapse: collapse;
+  empty-cells: show;
+  border: 1px solid #7a7;
+  clear: left;
+}
+
+#demo-table > caption {
+  text-align: left;
+  font-weight: bold;
+  font-size: 200%;
+  border-bottom: .2em solid #4ca;
+  margin-bottom: .5em;
+}
+
+
+/* basic shared rules */
+#demo-table th,
+#demo-table td {
+  text-align: right;
+  padding-right: .5em;
+}
+
+#demo-table th {
+  font-weight: bold;
+  padding-left: .5em;
+}
+
+
+/* header */
+#demo-table > thead > tr:first-child > th {
+  text-align: center;
+  color: blue;
+}
+
+#demo-table > thead > tr + tr > th {
+  font-style: italic;
+  color: gray;
+}
+
+/* fix size of superscript */
+#demo-table sup {
+  font-size: 75%;
+}
+
+/* body */
+#demo-table td {
+  background-color: #cef;
+  padding:.5em .5em .5em 3em;
+}
+
+#demo-table tbody th:after {
+  content: ":";
+}
+
+
+/* footer */
+#demo-table tfoot {
+  font-weight: bold;
+}
+
+#demo-table tfoot th {
+  color: blue;
+}
+
+#demo-table tfoot th:after {
+  content: ":";
+}
+
+#demo-table > tfoot td {
+  background-color: #cee;
+}
+
+#demo-table > tfoot > tr:first-child td {
+  border-top: .2em solid #7a7;
+}
+
+/* set the border to 0 */
+#demo-table tbody td {
+  border:0px solid #7a7;
+}
+  
+

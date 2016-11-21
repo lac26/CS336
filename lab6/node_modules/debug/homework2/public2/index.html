@@ -1,0 +1,60 @@
+<!-- Name: Lydia Cupery
+Date: October 29, 2016
+Assignment: Homework 2!-->
+
+<html>
+<head>
+  <title>Ajax Form</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+  <script src="//code.jquery.com/jquery-latest.min.js"></script>
+  <!-- the jQuery script it will be using !-->
+  <script src="script-jquery.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+
+<!-- form for user to enter ID to search !-->
+  <div class="form-group col-xs-10 col-xs-offset-2" >
+
+    <h1>Search Form</h1>
+
+
+    <form method="POST">
+
+      <!-- ID -->
+      <div >
+        <label for="id">What ID should I find?</label>
+        <input type="text" class = "id" name="id"  placeholder="your id" class="form-control">
+      </div>
+
+
+      <button type="submit" class="btn btn-success">Submit </button>
+
+      <p> <strong> Responses are below.  </strong></p>
+
+    </form>
+  </div>
+</body>
+<script>
+
+  $(document).ready(function() {
+    $( 'form' ).submit(function( event ) {
+      //get the value of the id
+     var myId = $(".id").val();
+     event.preventDefault();
+     $.ajax({
+      url: "/fetch",
+      type: "post",
+      data: { id:  myId}
+    })
+     .done(function( result ) {
+       $("body").append("<p>" + result.list + "</p>");
+            })
+     .fail(function(xhr, status, errorThrown) {
+          console.log("/fetch request unsuccessful.  Error" + errorThrown)
+              })
+   });
+  });
+</script>
+
+</html>

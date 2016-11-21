@@ -1,0 +1,73 @@
+/* Lydia Cupery
+* October 5, 2016
+* Lab05
+*/
+body {
+  font: 24px Helvetica;
+  background: #999;
+}
+#main {
+  min-height: 800px;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-flow: row;
+}
+#main article {
+  padding: 25px;
+  border: 5px solid #cc3;
+  background: #dd8;
+  flex: 3 1 60%;
+  order: 2;
+  border-color: #000;
+}
+#main nav {
+  padding: 25px;
+  border: 5px solid #88b;
+  background: #ccf;
+  flex: 1 6 20%;
+  order: 1;
+  border-color: #000;
+  text-align: right;
+}
+#main aside {
+  padding: 25px;
+  background: #ccf;
+  flex: 1 6 20%;
+  order: 3;
+  border-color: #000;
+  font-style: italic;
+}
+header {
+  font: 50px Helvetica;
+}
+header,
+footer {
+  display: block;
+  padding: 15px;
+  min-height: 100px;
+  border: 5px solid #eb5;
+  background: #feb;
+}
+/* Too narrow to support three columns */
+@media all and (max-width: 640px) {
+  #main,
+  #page {
+    flex-direction: column;
+  }
+  #main > article,
+  #main > aside {
+    order: 1;
+  }
+  #main > nav {
+    order: 0;
+    text-align: left;
+  }
+  #main > nav,
+  #main > aside,
+  header,
+  footer {
+    min-height: 50px;
+    max-height: 50px;
+  }
+}

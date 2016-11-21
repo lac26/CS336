@@ -1,0 +1,84 @@
+<!-- Name: Lydia Cupery
+Date: October 29, 2016
+Assignment: Homework 2!-->
+
+<!doctype html>
+<html>
+<head>
+  <title>Ajax Form</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+  <script src="//code.jquery.com/jquery-latest.min.js"></script>
+  <!-- the jQuery script it will be using !-->
+  <script src="script-jquery.js"></script>
+  <script src="app.js"></script>
+  <script src="jquery.js"></script>
+</head>
+<body>
+<!-- form for user to enter new person information !-->
+  <div class="form-group col-xs-8 col-xs-offset-2" >
+
+    <h1>Create a new user! </h1>
+    <p> (it's fun, belive me) </p>
+
+
+    <form method="POST">
+
+      <!-- ID -->
+      <div >
+        <label for="id">Your Id</label>
+        <input type="text" name="id"  placeholder="your id" class="form-control">
+      </div>
+
+      <!-- First name -->
+      <div>
+        <label for="fName">First Name</label>
+        <input type="text" name="fName" placeholder="first name" class="form-control">
+      </div>
+
+      <!-- Last name -->
+      <div >
+        <label for="lName">Last Name</label>
+        <input type="text" name="lName" placeholder="last name" class="form-control"
+      </div>
+
+      <!-- Start data -->
+      <div>
+        <label for="start">Start Date</label>
+        <input type="text" name="start"   placeholder="start date" class="form-control">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-success">Submit </button>
+
+    </form>
+  </div>
+
+
+
+
+
+  <script>
+
+    $( 'form' ).submit(function( event ) {
+      event.preventDefault();
+
+      var form = $( this );
+      var results = "";
+
+    $.ajax({
+      type: 'POST',
+      url: '/people',
+      data: form.serialize(),
+      dataType: 'json',
+      success: function( resp ) {
+        console.log( resp);
+      }
+    });
+  });
+
+</script>
+
+
+</body>
+</html>
+

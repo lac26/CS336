@@ -1,0 +1,15 @@
+6.1
+a)
+I could only test the get and the .all(requests) with the browser but could test all of the methods with the curl tool.  The post,put,header etc. requests I could not test in chrome because they had the same address '/request' as get and get is the request called by defualt.
+The requests I tested were:
+curl -X PUT http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X GET http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X HEAD  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl -X POST  http://localhost:2000/request -d {"person":"Lydia"} -H 'Content-Type: application/json'
+curl --head http://localhost:2000/request  
+curl http://localhost:2000/request
+b) Either page not found(404) or BAD_REQUEST
+
+6.2
+a) Forms support the post method, which reads in the current content of the form.  They also suppport get in order to display the form on the webpage.
+b) The form data is received from the html and passed back to the server via a body object populated with the data via the post method.  The data itself is not modified but the format it is displayed in is modified.
