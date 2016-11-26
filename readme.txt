@@ -1,6 +1,6 @@
-This is a refactored implementation of the (old) Facebook ReactJS tutorial - the comment list:
+Can view at:
+https://cs3366.herokuapp.com/
 
-     https://cs.calvin.edu/courses/cs/336/kvlinden/08react/backup/Tutorial_React.html
-     (formerly at https://facebook.github.io/react/docs/tutorial.html)
+Currently cannot see all of the rest of my files because I (accidentaly) deleted the ones I previously submitted.  Once I get back on the lab I will work on pushing them back up.
 
-This application is upgraded to integrate React Router as specified in lab exercise 12 (https://cs.calvin.edu/courses/cs/336/kvlinden/12router/lab.html). For the running app, see https://comments-kvlinden.herokuapp.com/.
+Please use my grace days when grading!
