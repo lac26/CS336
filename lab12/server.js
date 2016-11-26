@@ -8,12 +8,7 @@
  * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * Edited by Lydia Cupery for lab 10 (November 9 / 2016)
  */
-
-
-
-/* new code */
 
 var path = require('path');
 var express = require('express');
@@ -35,11 +30,6 @@ app.use(function(req, res, next) {
     res.setHeader('Cache-Control', 'no-cache');
     next();
 });
-
-MongoClient.connect('mongodb://cs336:bjarne@ds037597.mlab.com:37597/cs336', function (err, dbConnection) {
-    if (err) throw err
-    db = dbConnection;
-})
 
 app.get('/api/comments', function(req, res) {
     db.collection("comments").find({}).toArray(function(err, docs) {
@@ -102,4 +92,13 @@ app.use('*', express.static(APP_PATH));
 
 app.listen(app.get('port'), function() {
     console.log('Server started: http://localhost:' + app.get('port') + '/');
+});
+
+// This assumes that the MongoDB password has been set as an environment variable.
+var mongoURL = 'mongodb://cs336:' +
+               process.env.MONGO_PASSWORD +
+               '@ds015995.mlab.com:15995/kvlinden-cs336';
+MongoClient.connect("mongodb://cs336:bjarne@ds037597.mlab.com:37597/cs336", function(err, dbConnection) {
+    if (err) throw err;
+    db = dbConnection;
 });

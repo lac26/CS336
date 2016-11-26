@@ -1,94 +1,22 @@
+import React from 'react';
+import $ from 'jquery';
+import Remarkable from 'remarkable';
 
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var MongoClient = require('mongodb').MongoClient
+import Comment from './comment';
 
-var db;
-var APP_PATH = path.join(__dirname, 'dist');
-
-app.set('port', (process.env.PORT || 3000));
-
-app.use('/', express.static(APP_PATH));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'no-cache');
-    next();
-});
-
-app.get('/api/comments', function(req, res) {
-    db.collection("comments").find({}).toArray(function(err, docs) {
-        if (err) throw err;
-        res.json(docs);
-    });
-});
-
-app.post('/api/comments', function(req, res) {
-    var newComment = {
-        id: Date.now(),
-        author: req.body.author,
-        text: req.body.text,
-    };
-    db.collection("comments").insertOne(newComment, function(err, result) {
-        if (err) throw err;
-        db.collection("comments").find({}).toArray(function(err, docs) {
-            if (err) throw err;
-            res.json(docs);
+module.exports = React.createClass({
+    render: function() {
+        var commentNodes = this.props.data.map(function(comment) {
+            return (
+                <Comment id={comment.id} author={comment.author} key={comment.id}>
+                    {comment.text}
+                </Comment>
+            );
         });
-    });
-});
-
-app.get('/api/comments/:id', function(req, res) {
-    db.collection("comments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
-        if (err) throw err;
-        res.json(docs);
-    });
-});
-
-/* put method, updates the entry in the data base with req.body */
-app.put('/api/comments/:id', function(req, res) {
-    var updateId = Number(req.params.id);
-    var update = req.body;
-    db.collection('comments').updateOne(
-        { id: updateId },
-        { $set: update },
-        function(err, result) {
-            if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
-                if (err) throw err;
-                res.json(docs);
-            });
-        });
-});
-
-/* delete method deletes the entry in the database with the correspondin id */
-app.delete('/api/comments/:id', function(req, res) {
-    console.log("deleting comment");
-    db.collection("comments").deleteOne(
-        {'id': Number(req.params.id)},
-        function(err, result) {
-            if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
-                if (err) throw err;
-                res.json(docs);
-            });
-        });
-});
-
-// Send all routes/methods not specified above to the app root.
-app.use('*', express.static(APP_PATH));
-
-app.listen(app.get('port'), function() {
-    console.log('Server started: http://localhost:' + app.get('port') + '/');
-});
-
-// This assumes that the MongoDB password has been set as an environment variable.
-var mongoURL = 'mongodb://cs336:bjarne@ds037597.mlab.com:37597/cs336';
-MongoClient.connect('mongodb://cs336:bjarne@ds037597.mlab.com:37597/cs336', function(err, dbConnection) {
-    if (err) throw err;
-    db = dbConnection;
+        return (
+            <div className="commentList">
+                {commentNodes}
+            </div>
+        );
+    }
 });
