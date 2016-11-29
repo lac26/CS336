@@ -98,7 +98,7 @@ app.listen(app.get('port'), function() {
 var mongoURL = 'mongodb://cs336:' +
                process.env.MONGO_PASSWORD +
                '@ds037597.mlab.com:37597/cs336';
-MongoClient.connect('mongodb://cs336:bjarne@ds037597.mlab.com:37597/cs336', function(err, dbConnection) {
+MongoClient.connect(mongoURL, function(err, dbConnection) {
     if (err) throw err;
     db = dbConnection;
 });
