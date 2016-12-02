@@ -4,8 +4,11 @@ import { Router, Route, Redirect, browserHistory } from 'react-router';
 
 import CommentBox from './commentBox';
 import CommentEdit from './commentEdit';
+import { StoreTools } from './flux';
 
 import '../css/base.css';
+
+StoreTools.startLoadingComments();
 
 ReactDOM.render((
     <Router history={browserHistory}>
